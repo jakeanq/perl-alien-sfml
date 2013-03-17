@@ -5,7 +5,6 @@ use ExtUtils::MakeMaker;
 # the contents of the Makefile that is written.
 use warnings;
 use strict;
-use Time::HiRes qw(usleep);
 $| = 1;
 my @filenames = glob;
 
@@ -42,7 +41,7 @@ Ctrl+C to abort.  Installing in:
 ";
 
 for (my $i = 10 ; $i >= 0 ; $i--) {
-	#usleep(1000000);
+	#sleep 1;
 	print "$i ";
 }
 print "\n";
@@ -135,12 +134,72 @@ chdir '..';
 
 print "Using options of libs: '$sf_libs' and cflags: '$sf_cflags'\n";
 
+open(FILE, ">lib/Alien/SFML.pm");
+
+print FILE "package Alien::SFML;
+
+use 5.008009;
+use strict;
+use warnings;
+
+our \$VERSION = '0.01';
+
+use constant {
+	LIBS   => \"$sf_libs\",
+	CFLAGS => \"$sf_cflags\" };
+
+1;
+__END__
+
+=head1 NAME
+
+Alien::SFML
+
+=head1 SYNOPSIS
+
+  use Alien::SFML;
+  \$libs = Alien::SFML::LIBS;
+  \$cflags = Alien::SFML::CFLAGS;
+
+=head1 DESCRIPTION
+
+Installs SFML 2.0 RC
+
+=head2 EXPORT
+
+None by default.
+
+=head1 SEE ALSO
+
+Alien::SFML github page:
+https://github.com/jakeanq/perl-alien-sfml
+
+SFML github page
+https://github.com/jakeanq/perl-sfml
+
+http://www.sfml-dev.org/
+
+=head1 AUTHOR
+
+Jake Bott, E<lt>jake.anq\@gmail.comE<gt>
+
+=head1 COPYRIGHT
+
+Copyright (C) 2013 by Jake Bott
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself, either Perl version 5.16.2 or,
+at your option, any later version of Perl 5 you may have available.
+
+=cut";
+close FILE;
+
 WriteMakefile(
 	NAME               => 'Alien::SFML',
+	clean => {FILES => 'lib/Alien/SFML.pm'},
 	CONFIGURE_REQUIRES => { 'Archive::Tar' => 0, 'HTTP::Tiny' => 0, },
 	VERSION_FROM       => 'lib/Alien/SFML.pm',                           # finds $VERSION
 	PREREQ_PM          => {},                                            # e.g., Module::Name => 1.1
-	ABSTRACT_FROM      => 'lib/Alien/SFML.pm',                           # retrieve abstract from module
 	AUTHOR             => 'Jake Bott <jake.anq@gmail.com>',);
 
 sub install { # The code here works, but it doesn't get substituted in the makefile itself.
@@ -148,10 +207,10 @@ sub install { # The code here works, but it doesn't get substituted in the makef
 	if (defined $sf_folder) {
 		$inherited .= "
 cmake_install : all
-	make -f " . $sf_folder . "Makefile install
+	\$(NOECHO) cd $sf_folder; make install
 
 cmake_make : all
-	make -f " . $sf_folder . "Makefile all
+	\$(NOECHO) cd $sf_folder; make
 ";
 		$inherited =~ s/(install :: pure_install doc_install)/$1 cmake_install/;
 		print "Adding custom makefile sections\n";
@@ -159,11 +218,10 @@ cmake_make : all
 	$inherited;
 }
 
-sub all_target { # The code here should work, although it doesn't get called and all_target might not be correct (A method of MM_Any)
-	my $inherited = shift->SUPER::all_target(@_);
+sub top_targets { # The code here should work, although it doesn't get called and all_target might not be correct (A method of MM_Any)
+	my $inherited = shift->SUPER::top_targets(@_);
 	$inherited =~ s/(all :: pure_all manifypods)/$1 cmake_make/ if defined $sf_folder;
 	$inherited;
-	print "\$inherited: $inherited\n";;
 }
 
 =head1 COPYRIGHT

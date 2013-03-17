@@ -169,24 +169,5 @@ exit($nerr) ? 1 : 0;
 
 sub postf {
 	my ($content) = @_;
-	my $footer = q[
-
-=head1 COPYRIGHT
-
- ##########################################
- # Copyright 2013 Jake Bott, Gosha Tugai. #
- #=>------------------------------------<=#
- # All Rights Reserved. Part of perl-sfml #
- ##########################################
-
-=cut
-
-];
-	$footer =~ s/^\n(.*)\n$/$1/s;
-	if ($content =~ /\n=head1 COPYRIGHT\n\n.*?=cut\n+$/s) {
-		$content =~ s/\n=head1 COPYRIGHT\n\n.*?=cut\n$/$footer/s;
-	} else {
-		$content .= $footer;
-	}
 	return $content;
 }

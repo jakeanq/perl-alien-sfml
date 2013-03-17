@@ -1,6 +1,6 @@
 Changes
 Makefile.PL
 MANIFEST
+MANIFEST.SKIP
 README
 t/Alien-SFML.t
-lib/Alien/SFML.pm

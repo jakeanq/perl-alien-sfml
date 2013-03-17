@@ -4,3 +4,4 @@ Makefile
 *.bak
 Laurent*
 SFML-source*
+blib
