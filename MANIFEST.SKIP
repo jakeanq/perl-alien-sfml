@@ -1,0 +1,9 @@
+tidy\.pl
+\.git.+
+\.perltidyrc
+\.old
+MYMETA
+\bMakefile$
+\.bak
+Laurent
+SFML-source

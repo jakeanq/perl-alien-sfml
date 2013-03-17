@@ -1,0 +1,6 @@
+Changes
+Makefile.PL
+MANIFEST
+README
+t/Alien-SFML.t
+lib/Alien/SFML.pm

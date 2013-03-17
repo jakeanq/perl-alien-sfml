@@ -1,0 +1,6 @@
+*.old
+MYMETA*
+Makefile
+*.bak
+Laurent*
+SFML-source*
