@@ -196,13 +196,13 @@ close FILE;
 
 WriteMakefile(
 	NAME               => 'Alien::SFML',
-	clean => {FILES => 'lib/Alien/SFML.pm'},
+	clean              => { FILES => 'lib/Alien/SFML.pm' },
 	CONFIGURE_REQUIRES => { 'Archive::Tar' => 0, 'HTTP::Tiny' => 0, },
 	VERSION_FROM       => 'lib/Alien/SFML.pm',                           # finds $VERSION
 	PREREQ_PM          => {},                                            # e.g., Module::Name => 1.1
 	AUTHOR             => 'Jake Bott <jake.anq@gmail.com>',);
 
-sub install { # The code here works, but it doesn't get substituted in the makefile itself.
+sub install {                                                            # The code here works, but it doesn't get substituted in the makefile itself.
 	my $inherited = shift->SUPER::install(@_);
 	if (defined $sf_folder) {
 		$inherited .= "
@@ -218,7 +218,7 @@ cmake_make : all
 	$inherited;
 }
 
-sub top_targets { # The code here should work, although it doesn't get called and all_target might not be correct (A method of MM_Any)
+sub top_targets {    # The code here should work, although it doesn't get called and all_target might not be correct (A method of MM_Any)
 	my $inherited = shift->SUPER::top_targets(@_);
 	$inherited =~ s/(all :: pure_all manifypods)/$1 cmake_make/ if defined $sf_folder;
 	$inherited;
