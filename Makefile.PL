@@ -41,7 +41,7 @@ Ctrl+C to abort.  Installing in:
 ";
 
 for (my $i = 10 ; $i >= 0 ; $i--) {
-	#sleep 1;
+	sleep 1;
 	print "$i ";
 }
 print "\n";

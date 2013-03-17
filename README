@@ -5,6 +5,23 @@ This module installs SFML 2.0 RC
 
 INSTALLATION
 
+Alien::SFML presents an important message to you:
+================>>>IMPORTANT!<<<================
+Due to platform inconsistancies, Windows being a pain,
+the lack of mice on titan and the general state of the
+universe, Alien::SFML has decided to not actually bother
+testing your computer to see if it has SFML 2.0 RC
+installed unless you use pkg-config.  
+
+If you choose to install it yourself, please tell this
+script about it: Set the variables \$PERLSFMLLIBS and
+$PERLSFMLCFLAGS to the appropriate values (the same
+format as what pkg-config would give. Makefile.PL will
+check the above environment variables first, then try
+pkg-config then finally just go ahead and install it.
+$PERLSFMLLIBS will be rejected if it doesn't appear to
+include a '-l' in it.
+
 To install this module type the following:
 
    perl Makefile.PL
