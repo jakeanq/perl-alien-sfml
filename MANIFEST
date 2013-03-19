@@ -1,6 +1,7 @@
+Build.PL
 Changes
-Makefile.PL
-MANIFEST
+LICENSE
+MANIFEST			This list of files
 MANIFEST.SKIP
 README
 t/Alien-SFML.t

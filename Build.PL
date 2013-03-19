@@ -1,0 +1,47 @@
+use strict;
+use warnings;
+use 5.008001;
+use Alien::Base::ModuleBuild;
+
+my $builder = Alien::Base::ModuleBuild->new(
+	'meta-spec' => {
+		version => '2',
+		url     => 'http://search.cpan.org/perldoc?CPAN::Meta::Spec',
+	},
+	module_name        => 'Alien::SFML',
+	dist_abstract      => 'Build and install SFML 2.0 (RC)',
+	license            => 'perl',
+	configure_requires => {
+		'Alien::Base' => 0,
+	},
+	requires => {
+		'perl'        => '5.8.1',
+		'Alien::Base' => 0,
+	},
+	dist_author      => 'Jake Bott <jake.anq@gmail.com>',
+	alien_name       => 'sfml-system',
+	alien_repository => {
+		protocol => 'local',
+		pattern => qr/SFML-sources.tgz/,
+	},
+	alien_build_commands => [
+		'pwd',
+		'cmake -DCMAKE_INSTALL_PREFIX:PATH=%s CMakeLists.txt',
+		'make',
+	],
+	alien_install_commands => [
+		'make install'
+	],
+	alien_provides_libs => '-lsfml-audio -lsfml-network -lsfml-graphics -lsfml-window -lsfml-system',
+	resources           => {
+		bugtracker => {
+			web    => 'http://github.com/jakeanq/perl-alien-sfml/issues',
+			mailto => 'jake.anq@gmail.com',
+		},
+		repository => {
+			url  => 'git://github.com/jakeanq/perl-alien-sfml.git',
+			web  => 'http://github.com/jakeanq/perl-alien-sfml',
+			type => 'git',
+		},
+	},);
+$builder->create_build_script;

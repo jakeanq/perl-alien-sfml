@@ -5,37 +5,32 @@ This module installs SFML 2.0 RC
 
 INSTALLATION
 
-Alien::SFML presents an important message to you:
-================>>>IMPORTANT!<<<================
-Due to platform inconsistancies, Windows being a pain,
-the lack of mice on titan and the general state of the
-universe, Alien::SFML has decided to not actually bother
-testing your computer to see if it has SFML 2.0 RC
-installed unless you use pkg-config.  
-
-If you choose to install it yourself, please tell this
-script about it: Set the variables \$PERLSFMLLIBS and
-$PERLSFMLCFLAGS to the appropriate values (the same
-format as what pkg-config would give. Makefile.PL will
-check the above environment variables first, then try
-pkg-config then finally just go ahead and install it.
-$PERLSFMLLIBS will be rejected if it doesn't appear to
-include a '-l' in it.
-
-To install this module type the following:
-
-   perl Makefile.PL
-   make
-   make test
-   make install
+   perl Build.PL
+   ./Build
+   ./Build test
+   ./Build install
 
 DEPENDENCIES
 
 This module requires these other modules and libraries:
 
-ExtUtils::MakeMaker
-HTTP::Tiny
-Archive::Tar
+Perl
+
+Alien::Base
+
+Non-perl
+
+If you are on linux, you will need dev packages for:
+
+    pthread
+    opengl
+    xlib
+    xrandr
+    freetype
+    glew
+    jpeg
+    sndfile
+    openal
 
 COPYRIGHT AND LICENCE
 
@@ -45,4 +40,17 @@ This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.16.2 or,
 at your option, any later version of Perl 5 you may have available.
 
+BUGS
 
+Please report bugs related to installing SFML here:
+
+https://github.com/jakeanq/perl-alien-sfml/issues
+
+Note that this is not for bugs in the SFML module or the SFML library.  For those,
+see the module and library homepages:
+
+https://github.com/jakeanq/perl-sfml/
+http://www.sfml-dev.org/
+
+Note that I do not maintain SFML itself, only Alien::SFML and the XS/perl bindings
+for it, under the SFML module.

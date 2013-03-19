@@ -3,9 +3,9 @@ tidy\.pl
 \.perltidyrc
 \.old
 MYMETA
-\bMakefile$
 \.bak
-Laurent
-SFML-source
 blib
 lib
+_build
+\bBuild$
+_share
