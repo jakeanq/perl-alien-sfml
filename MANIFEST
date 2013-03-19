@@ -3,5 +3,8 @@ Changes
 LICENSE
 MANIFEST			This list of files
 MANIFEST.SKIP
+META.json
+META.yml
 README
+SFML-sources.tgz
 t/Alien-SFML.t

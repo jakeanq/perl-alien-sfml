@@ -1,9 +1,9 @@
 *.old
 MYMETA*
+META*
 Makefile
 *.bak
 Laurent*
-SFML-source*
 blib
 lib/
 pm_to_blib

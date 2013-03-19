@@ -9,3 +9,5 @@ lib
 _build
 \bBuild$
 _share
+_alien
+Alien-SFML-\d.+
