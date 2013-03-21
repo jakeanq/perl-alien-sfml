@@ -22,7 +22,7 @@ my $builder = Alien::Base::ModuleBuild->new(
 	alien_name       => 'sfml-system',
 	alien_repository => {
 		protocol => 'local',
-		pattern => qr/SFML-sources.tgz/,
+		pattern => qr/SFML-sources\.tgz/,
 	},
 	alien_build_commands => [
 		'pwd',
