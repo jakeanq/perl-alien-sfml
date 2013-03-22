@@ -45,3 +45,17 @@ my $builder = Alien::Base::ModuleBuild->new(
 		},
 	},);
 $builder->create_build_script;
+
+
+=head1 COPYRIGHT
+
+ ############################
+ # Copyright 2013 Jake Bott #
+ #=>----------------------<=#
+ #   All Rights Reserved.   #
+ #   Part of Alien::SFML.   #
+ #=>----------------------<=#
+ #   See the LICENCE file   #
+ ############################
+
+=cut

@@ -34,11 +34,14 @@ If you are on linux, you will need dev packages for:
 
 COPYRIGHT AND LICENCE
 
-Copyright (C) 2013 by Jake Bott
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself, either Perl version 5.8.1 or,
-at your option, any later version of Perl 5 you may have available.
+ ############################
+ # Copyright 2013 Jake Bott #
+ #=>----------------------<=#
+ #   All Rights Reserved.   #
+ #   Part of Alien::SFML.   #
+ #=>----------------------<=#
+ #   See the LICENCE file   #
+ ############################
 
 BUGS
 
