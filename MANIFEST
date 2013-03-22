@@ -1,5 +1,6 @@
 Build.PL
 Changes
+lib/Alien/SFML.pm
 LICENSE
 MANIFEST			This list of files
 MANIFEST.SKIP
