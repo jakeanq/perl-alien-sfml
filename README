@@ -20,6 +20,9 @@ Alien::Base
 
 Non-perl
 
+You will not be able to install this unless you have cmake!
+	Note: Build dep only.
+
 If you are on linux, you will need dev packages for:
 
     pthread

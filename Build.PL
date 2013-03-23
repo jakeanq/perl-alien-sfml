@@ -19,7 +19,7 @@ my $builder = Alien::Base::ModuleBuild->new(
 		'Alien::Base' => 0,
 	},
 	dist_author      => 'Jake Bott <jake.anq@gmail.com>',
-	alien_name       => 'sfml-system',
+	alien_name       => 'sfml-audio sfml-network sfml-graphics sfml-window sfml-system',
 	alien_repository => {
 		protocol => 'local',
 		pattern => qr/SFML-sources\.tgz/,
