@@ -30,8 +30,7 @@ my $builder = Alien::Base::ModuleBuild->new(
 	alien_build_commands => [
 		'pwd',
 		Alien::CMake->config('prefix')
-		  . '/bin/cmake -DCMAKE_INSTALL_PREFIX:PATH=%s 
-CMakeLists.txt',
+		  . '/bin/cmake -DCMAKE_INSTALL_PREFIX:PATH=%s CMakeLists.txt',
 		'make',
 	],
 	alien_install_commands => ['make install'],
