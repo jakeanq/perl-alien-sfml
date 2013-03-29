@@ -17,11 +17,7 @@ This module requires these other modules and libraries:
 Perl
 
 Alien::Base
-
-Non-perl
-
-You will not be able to install this unless you have cmake!
-	Note: Build dep only.
+Alien::CMake
 
 If you are on linux, you will need dev packages for:
 
@@ -60,3 +56,7 @@ http://www.sfml-dev.org/
 
 Note that I do not maintain SFML itself, only Alien::SFML and the XS/perl bindings
 for it, under the SFML module.
+
+CHANGES:
+
+V0.0101 - Added CMake dependancy

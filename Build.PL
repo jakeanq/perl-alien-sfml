@@ -2,6 +2,7 @@ use strict;
 use warnings;
 use 5.008001;
 use Alien::Base::ModuleBuild;
+use Alien::CMake;
 
 my $builder = Alien::Base::ModuleBuild->new(
 	'meta-spec' => {
@@ -12,7 +13,9 @@ my $builder = Alien::Base::ModuleBuild->new(
 	dist_abstract      => 'Build and install SFML 2.0 (RC)',
 	license            => 'perl',
 	configure_requires => {
-		'Alien::Base' => 0,
+		'Alien::Base'  => 0,
+		'Alien::CMake' => 0,
+		'Module::Build' => 0.38,
 	},
 	requires => {
 		'perl'        => '5.8.1',
@@ -26,12 +29,14 @@ my $builder = Alien::Base::ModuleBuild->new(
 	},
 	alien_build_commands => [
 		'pwd',
-		'cmake -DCMAKE_INSTALL_PREFIX:PATH=%s CMakeLists.txt',
+		Alien::Cmake->config('prefix').'/bin/cmake -DCMAKE_INSTALL_PREFIX:PATH=%s CMakeLists.txt',
 		'make',
 	],
 	alien_install_commands => [
 		'make install'
 	],
+	extra_compiler_flags => Alien::CMake->config('cflags'),
+	extra_linker_flags   => Alien::CMake->config('libs'),
 	alien_provides_libs => '-lsfml-audio -lsfml-network -lsfml-graphics -lsfml-window -lsfml-system',
 	resources           => {
 		bugtracker => {
