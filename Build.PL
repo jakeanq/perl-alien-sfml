@@ -9,7 +9,7 @@ my $builder = Alien::Base::ModuleBuild->new(
 	dist_abstract      => 'Build and install SFML 2.0 (RC)',
 	license            => 'perl',
 	configure_requires => {
-		'Alien::Base'   => 0,
+		'Alien::Base::ModuleBuild' => 0,
 		'Alien::CMake'  => 0,
 		'Module::Build' => 0.38,
 	},
